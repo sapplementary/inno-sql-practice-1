@@ -1,0 +1,17 @@
+services:
+  db:
+    image: pgvector/pgvector:pg18
+    container_name: pagila-db
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: pagila
+    ports:
+      - "5433:5432"
+    volumes:
+      - pagila-data:/var/lib/postgresql
+      - ./pagila/pagila-schema.sql:/docker-entrypoint-initdb.d/01-schema.sql:ro
+      - ./pagila/pagila-data.sql:/docker-entrypoint-initdb.d/02-data.sql:ro
+
+volumes:
+  pagila-data:
