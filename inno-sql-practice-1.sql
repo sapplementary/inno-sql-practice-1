@@ -65,8 +65,6 @@ WITH actor_films AS (
     JOIN category c
         ON fc.category_id = c.category_id
     WHERE c."name" = 'Children'
-    GROUP by
-    	a.actor_id, 
     GROUP BY
 	a.actor_id,
 	a.first_name,
