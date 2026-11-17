@@ -49,7 +49,7 @@ WHERE NOT EXISTS (
 );
 
 
--- the 5th query (added TOP 3)
+-- the 5th query (added TOP 3 + group by  "a.actor_id")
 WITH actor_films AS (
     SELECT
         a.first_name,
@@ -66,7 +66,8 @@ WITH actor_films AS (
     JOIN category c
         ON fc.category_id = c.category_id
     WHERE c."name" = 'Children'
-    GROUP BY
+    GROUP by
+    	a.actor_id, 
         a.first_name,
         a.last_name
 )
