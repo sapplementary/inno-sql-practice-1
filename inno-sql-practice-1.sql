@@ -49,7 +49,11 @@ WHERE NOT EXISTS (
 );
 
 
+sql-pagila-pr
 -- the 5th query (added TOP 3 + group by  "a.actor_id")
+
+-- the 5th query (added TOP 3)
+main
 WITH actor_films AS (
     SELECT
         a.first_name,
@@ -66,8 +70,11 @@ WITH actor_films AS (
     JOIN category c
         ON fc.category_id = c.category_id
     WHERE c."name" = 'Children'
+sql-pagila-pr
     GROUP by
     	a.actor_id, 
+    GROUP BY
+main
         a.first_name,
         a.last_name
 )
